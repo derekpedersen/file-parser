@@ -8,8 +8,7 @@ import (
 
 var datasources = map[string]string{
 	domain.CENTINELA: "https://www.centinelamed.com/261150758_CentinelaHospitalMedicalCenter_standardcharges.json",
-	// "Centinela": "./samples/centinela.json",
-	domain.ADVENT: "https://www.adventhealth.com/sites/default/files/CDM/2022/480637331_AdventHealthShawneeMission_standardcharges.json",
+	domain.ADVENT:    "https://www.adventhealth.com/sites/default/files/CDM/2022/480637331_AdventHealthShawneeMission_standardcharges.json",
 }
 
 func main() {

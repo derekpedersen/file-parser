@@ -33,10 +33,10 @@ I did spend more time than the project initially asked for and recommended, but 
 | `models` | 5 - 10 minutes | Simple DTOs so not much time spent on them besides just looking at the available data and creating associated fields. |
 | `utilities` | 5 minutes | Go does require that you need to write some boiler plate but as you can see it's not that complicated and is easily copy-pasta'd as needed. |
 | `main` | 10 - 15 minutes | The `main` file was relatively quick to setup. The only major change I made from it's inception to it's delivery was how it handled the iterative processing of the data sources. Initially had it processing the files one at a time then realised I needed to process them both first in order cross polinate the sources and enrich the data before saving the CSVs. |
-| `domain` | 60 - 70 minutes | Here is the meat of the application. |
+| `domain` | 65 - 70 minutes | Here is the meat of the application. |
 | `Makefile` | 5 minutes | A small `Makefile` to help make running the application easier. |
 | `README` | 10 - 15 minutes | Writting, editing, and re-reading. |
-| `Total` | 95 - 120 minutes | Overall time estimate for this application. |
+| `Total` | 100 - 125 minutes | Overall time estimate for this application. |
 
 ## Tradeoffs (Future Improvements)
 
