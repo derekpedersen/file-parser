@@ -1,8 +1,6 @@
 package domain
 
 import (
-	"bytes"
-	"encoding/gob"
 	"encoding/json"
 	"fmt"
 
@@ -13,6 +11,7 @@ import (
 
 type Advent []model.Advent
 
+// this isn't the cleanest solution, but sometimes brute forcing it just gets the job done and buys you time to revisit the problem later
 func parseAdventData(data model.AdventData) (Advent, error) {
 	advent := Advent{}
 	for _, n := range data {
@@ -121,18 +120,12 @@ func NewAdvent(key, datasource string) (advent Advent, err error) {
 func (a *Advent) RemoveDuplicates() {
 	unique := make(map[string]bool)
 	for k, v := range *a {
-		if _, ok := unique[string(Hash(v))]; !ok {
-			unique[string(Hash(v))] = true
+		if _, ok := unique[string(utilities.Hash(v))]; !ok {
+			unique[string(utilities.Hash(v))] = true
 			continue
 		}
 		RemoveAdvent(*a, k)
 	}
-}
-
-func Hash(a model.Advent) []byte {
-	var b bytes.Buffer
-	gob.NewEncoder(&b).Encode(a)
-	return b.Bytes()
 }
 
 func RemoveAdvent(s Advent, i int) Advent {
@@ -157,9 +150,8 @@ func (a *Advent) Data() (data Data, err error) {
 		altcode := fmt.Sprintf("%v", v.Code)
 		code := AltCodes[altcode]
 		if len(code) == 0 {
-			// unsure if this is how we want to handle a non-matching code to altcode
-			// continue
-			code = v.Code
+			// unsure if we want to exclude non-matching alt code
+			continue
 		}
 		p := model.Data{
 			ProcedureCode:     code,
@@ -170,14 +162,16 @@ func (a *Advent) Data() (data Data, err error) {
 
 		for insurer, rate := range v.Prices {
 			d := p
+			// need to possibly update to account for a variety of types
 			if _, ok := rate.(string); ok {
-				if len(rate.(string)) == 0 || rate.(string) == "N/A" || rate.(string) == "0" {
+				if len(rate.(string)) == 0 ||
+					rate.(string) == "N/A" ||
+					rate.(string) == "0" {
 					continue
 				}
 				d.InsuranceRate = rate.(string)
 			}
 			d.InsurancePayerName = insurer
-			// TODO: account for floats/ints
 			data = append(data, d)
 		}
 	}

@@ -15,7 +15,7 @@ func DownloadFile(key, datasource string) (string, error) {
 	}
 
 	// save data points so we can re-run if needed for debugging or re-processing due to an encountered error.
-	err = ioutil.WriteFile("./downloads/"+key+"_"+time.Now().Format(time.ANSIC)+".json", []byte(*data), 0644)
+	err = ioutil.WriteFile("./bin/downloads/"+key+"_"+time.Now().Format(time.ANSIC)+".json", []byte(*data), 0644)
 	if err != nil {
 		log.Fatal(err)
 	}

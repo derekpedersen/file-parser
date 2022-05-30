@@ -7,7 +7,7 @@ import (
 )
 
 func Write(key string, data [][]string) {
-	csvFile, err := os.Create("./output/" + key + "_data.csv")
+	csvFile, err := os.Create("./bin/output/" + key + "_data.csv")
 	if err != nil {
 		fmt.Println(err)
 	}

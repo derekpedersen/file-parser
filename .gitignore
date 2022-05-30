@@ -1,0 +1,8 @@
+# opertaional data
+bin/downloads/*
+
+# resulting data
+bin/ouput/*
+
+# VS Code specific settings
+.vscode/*

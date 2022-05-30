@@ -2,6 +2,10 @@
 
 This is my `File Parser` application that I wrote as part of the [interview process](https://github.com/serif-health/takehome) for [Serif Health](https://www.serifhealth.com/).
 
+## Sample Output
+
+If you want to skip the `build` & `run` phases and just view the output I generated in my latest run, you can view them in the [samples folder](./bin/samples).
+
 ## Run
 
 As part of the application submission I've included a prebuilt version of the library. Typically I would not commit any build artifacts to the repositoy, but in this case the tradeoff between available time and setting up a distribution and consumption mechanism outside of the repository made this the best option.
@@ -12,7 +16,7 @@ As part of the application submission I've included a prebuilt version of the li
 | Mac | `./bin/dist/mac/file-parser` |
 | Windows | `./bin/dist/windows/file-parser.exe` |
 
-When the command is run from the root of this repository the generated CSVs are placed into the [output](./output/) folder.
+When the command is run from the root of this repository the generated CSVs are placed into the [bin/output](./bin/output/) folder.
 
 ## Build
 
